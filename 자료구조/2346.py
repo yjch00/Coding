@@ -8,17 +8,19 @@ queue = deque(range(1,n+1,1))
 boom = []
 idx = 1
 while queue:
-    print(idx)
-    print(queue)
+    # print(idx)
+    # print(queue)
 
     if idx-1 >= 0:
         for i in range(idx-1):
             queue.append(queue.popleft())
     else:
-        for i in range(-idx+1):
+        for i in range(-idx):
             queue.insert(0,queue.pop())
+    # print(queue)
     tmp = queue.popleft()
-    boom.append(tmp)
-    idx = idx + m[tmp-1] - 1
-print(boom)
+    boom.append(str(tmp))
+    # print(boom)
+    idx = m[tmp-1]
+print(' '.join(boom))
 
