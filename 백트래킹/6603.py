@@ -4,26 +4,36 @@
 import sys
 
 
-n, m = list(map(int, sys.stdin.readline().split()))
-nums = list(map(int, sys.stdin.readline().split()))
-nums = list(set(nums))
-
-nums.sort()
-total = []
-
 def dfs(depth):
-    if depth == m:
+    if depth == 6:
         print(*box)
         return          # return 필수 !!
+    last = 0
     for i in range(len(nums)):
+        if nums[i] in box:
+            continue
         if box:
             if box[-1] > nums[i]:
                 continue 
-        box.append(nums[i])
-        dfs(depth + 1)
-        box.pop()
+        if  last != nums[i]:
+            box.append(nums[i])
+
+            last = nums[i]
+            dfs(depth + 1)
+            box.pop()
+
+while True:
+
+    nums = list(map(int, sys.stdin.readline().strip().split()))
+    if len(nums) == 1:
+        break
+    n = nums[0]
+    nums = nums[1:]
+    visited = [False] * n
+
+    
+    box = []
+    dfs(0)
+    print()
 
 
-
-box = []
-dfs(0)
