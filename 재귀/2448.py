@@ -1,8 +1,6 @@
 import sys
 
 n = int(sys.stdin.readline())
-
-
 graph = [[' ']*(2*n) for _ in range(n)]
 
 def solution(x,y,N):
@@ -17,7 +15,7 @@ def solution(x,y,N):
         solution(x, y, next_n)
         solution(x+next_n, y-next_n, next_n)
         solution(x+next_n, y+next_n, next_n)
-        
+
 solution(0,n-1,n)        
 
 for i in graph:

@@ -9,3 +9,4 @@ while len(queue)>1:
     tmp = queue.popleft()
     queue.append(tmp)
 print(queue[0])
+
